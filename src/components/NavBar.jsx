@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Header.module.css';
+import CartWidget from './CartWidget';
 
 export default function NavBar() {
   return (
@@ -15,6 +16,7 @@ export default function NavBar() {
               <a href="/tienda">Tienda</a>
             </li>
         </ul>
+        <CartWidget />
     </nav>
   )
 }
