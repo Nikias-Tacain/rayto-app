@@ -7,13 +7,10 @@ export default function NavBar() {
     <nav className={styles.navegacion}>
         <ul className={styles.navBar}>
             <li>
-              <a href="#">Inicio</a>
+              <a href="/">Inicio</a>
             </li>
             <li>
-              <a href="#sobreNosotros">Sobre Nosotros</a>
-            </li>
-            <li>
-              <a href="/tienda">Tienda</a>
+              <a href="/tienda">Productos</a>
             </li>
         </ul>
         <CartWidget />
