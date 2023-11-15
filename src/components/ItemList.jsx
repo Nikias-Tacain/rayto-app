@@ -1,54 +1,52 @@
 import React from 'react'
 import { useEffect, useState} from 'react'
 import Item from './Item';
+import styles from './ItemList.module.css';  
+import ItemDetail from './ItemDetail';
 const ItemList = () => {
-    const [ productList, setProductList ] = useState([]);
-    const [productSelectedId, setProductSelectedId] = useState(0);
+    const [ items, setItems ] = useState([]);
+    const [itemSelectedId, setItemSelectedId] = useState(null);
+    const [itemSelected, setItemSelected] = useState(null);
+
     const fetchProducts = () =>{
-        setTimeout(()=>{
-            fetch('https://654c2d0d77200d6ba8589671.mockapi.io/products', {
-                method: 'GET'
-            })
-            .then((resp) => {
-                return resp.json()
-            }).then((data) => {
-                setProductList(data)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-        }, 2000)
+        fetch('https://fakestoreapi.com/products')
+        .then((res)=>res.json())
+        .then((json)=>setItems(json))
+        .catch((err)=>console.log(err));
+    };
 
-    }
-
-    const getProduct = () =>{
-        fetch(`https://654c2d0d77200d6ba8589671.mockapi.io/products/${productSelectedId}`)
-            .then((resp) =>resp.json())
-            .then((detail) =>{
-                console.log(detail);
-            })
-            .catch(() =>{
-
-            })
-    }
+    const fetchProduct = () =>{
+        fetch(`https://fakestoreapi.com/products/${itemSelectedId}`)
+        .then((res)=>res.json())
+        .then((producto)=>setItemSelected(producto))
+        .catch((err)=>console.log(err));
+    };
+    useEffect(()=>{
+        fetchProduct()
+    },[itemSelectedId]);
 
     useEffect(() =>{
         fetchProducts()
     },[])
   return (
-    productList.length === 0 ?
-    <h2> Cargando...</h2> : 
-    <div>
-        {productList.map(({ name, description, price, image, id }, index) =>(
-            <div key={index} onClick={() => {setProductSelectedId(id); getProduct();}} >
-                <Item 
-                    name={name}
-                    description={description}
-                    price={price}
-                    image={`${image}?id=${index}`}
-                />
+    <div className={styles.cards}>
+        {itemSelectedId && (
+            <div>
+                <ItemDetail itemSelected={itemSelected}/>
             </div>
-        ))}
+        )}
+        {items.map((item)=>{
+            return (
+                <div key={item.id} onClick={()=> setItemSelectedId(item.id)}>
+                    <Item
+                        title={item.title}
+                        description={item.description}
+                        price={item.price}
+                        image={item.image}
+                    />
+                </div>
+            )
+        })}
     </div>
   )
 }
