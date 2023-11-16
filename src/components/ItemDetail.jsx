@@ -4,11 +4,11 @@ const ItemDetail = ({itemSelected}) => {
   return (
     <div>
         <h6>{itemSelected?.title}</h6>
-        <img src={itemSelected?.image} alt={itemSelected?.title} width={70} />
+        <img src={itemSelected?.image} alt={itemSelected?.title} width={150} />
         <div>
             <p>{itemSelected?.description}</p>
         </div>
-        <p>{itemSelected?.price}</p>
+        <p>$ {itemSelected?.price}</p>
     </div>
   )
 }

@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './ItemList.module.css';
 
 const Item = ({title, description, price, image}) => {
   return (
-    <div>
+    <div className={styles.product}>
         <img src={image} alt={title} />
         <div>
             <h3>{title}</h3>

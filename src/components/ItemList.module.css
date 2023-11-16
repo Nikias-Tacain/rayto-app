@@ -1,9 +1,15 @@
-.cards{
-    margin-top: 5%;
-    display: flex;
+.product img{
+    border-radius: 8px;
     width: 100%;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    text-align: center;
+    height: auto;
+    box-shadow: 0px 0px 30px #000;
+}
+.cards{
+    display: grid;
+    margin-top: 5%;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(400px, 1fr)
+    );
+    gap: 32px;
 }
