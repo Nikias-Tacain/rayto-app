@@ -2,9 +2,10 @@ import React from 'react'
 import { useEffect, useState} from 'react'
 import Item from './Item';
 import styles from './ItemList.module.css';  
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 const ItemList = () => {
     const [ items, setItems ] = useState([]);
+    const { id } = useParams();
 
     const fetchProducts = () =>{
         fetch('https://fakestoreapi.com/products')
@@ -17,6 +18,17 @@ const ItemList = () => {
     useEffect(() =>{
         fetchProducts()
     },[])
+
+    useEffect(() =>{
+        if (id) {
+            const filterItems = items.filter((product) =>{
+                const category = id.includes('-') ? id.replace('-', ' ') : id;
+                return product.category === category;
+    
+            })
+            setItems(filterItems)
+        }
+    },[id])
   return (
     <div className={styles.cards}>
         {items.map((item)=>{
