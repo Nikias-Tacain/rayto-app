@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './ItemDetail.module.css';
 import { Link } from 'react-router-dom';
+import { useCarrito } from '../CarritoContext/CarritoContext';
 
 const ItemDetail = ({ item }) => {
+    const { handleButtonClick } = useCarrito();
   return (
     <div className={styles.container}>
         <div className={styles.containerLinks}>
@@ -24,6 +26,7 @@ const ItemDetail = ({ item }) => {
                 <h3 className={styles.titulo}>{item.nombre}</h3>
                 <p className={styles.precio}>${item.precio}</p>
             </div>
+            <button onClick={() => handleButtonClick(item)}>comprar</button>
         </div>
     </div>
   );
