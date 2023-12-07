@@ -1,0 +1,26 @@
+.header{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.navBar{
+    width: 50%;
+}
+.navBar ul{
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+.navBar ul li{
+    background-color: #7c7474;
+    border-radius: 20px;
+    width: 130px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}

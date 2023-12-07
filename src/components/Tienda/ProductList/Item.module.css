@@ -1,0 +1,61 @@
+/* Item.module.css */
+.card{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 5%;
+}
+.container {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    max-width: 350px; /* Establece un ancho máximo para evitar que el contenedor sea demasiado ancho en pantallas grandes */
+    margin: 10px auto; /* Centra el contenedor horizontalmente */
+}
+.image {
+    width: 100%;
+    max-width: 100%; /* La imagen ocupará el 100% del ancho del contenedor */
+    height: auto;
+    margin-bottom: 10px;
+}
+  
+.link {
+    text-decoration: none;
+    color: #333;
+}
+  
+.link:hover {
+    text-decoration: underline;
+}
+  
+.title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+  
+.price {
+    font-weight: bold;
+    color: #e44d26; /* Color naranja, puedes cambiarlo según tu preferencia */
+}
+.inputSearch{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    width: 400px;
+}
+.divBusqueda{
+    text-align: center;
+    margin-top: 40px;
+}
+  /* Estilos para hacerlo responsive */
+  
+@media screen and (max-width: 600px) {
+    .container {
+      max-width: 100%; /* Cambia el ancho máximo para pantallas pequeñas */
+    }
+}
+  
+  
